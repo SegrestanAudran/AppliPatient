@@ -8,6 +8,9 @@ import { PrescriptionComponent } from './prescription/prescription.component';
 import { appRoutingModule } from './app.routing';
 import { RestService } from './rest.service';
 import { HttpClientModule } from '@angular/common/http';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatMenuModule} from '@angular/material/menu';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +23,9 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     BrowserAnimationsModule,
     appRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    MatGridListModule,
+    MatMenuModule
   ],
   providers: [RestService],
   bootstrap: [AppComponent]

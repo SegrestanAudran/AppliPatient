@@ -7,7 +7,6 @@ import { Patient, Observation, Medecin, MedicationOrder } from '../fhirdata';
 })
 export class RestService {
   server = "https://fhir.eole-consulting.io/api/";
-  patient=""
 
   constructor(private http: HttpClient) { }
 
@@ -26,6 +25,34 @@ export class RestService {
 
   getPatient(): Promise<any> {
     return this.http.get(this.server + "patient/12345", {
+    })
+      .toPromise().then(response => response)
+      .catch(this.handleError);
+  };
+
+  getPractitioner(): Promise<any> {
+    return this.http.get(this.server + "practitioner/12345", {
+    })
+      .toPromise().then(response => response)
+      .catch(this.handleError);
+  };
+
+  getPrescription(): Promise<any> {
+    return this.http.get(this.server + "medication-request", { /*?requester.identifier=f333*/
+    })
+      .toPromise().then(response => response)
+      .catch(this.handleError);
+  };
+
+  putObservation(observation : any): Promise<any> {
+    return this.http.put(this.server + "observation", observation, {
+    })
+      .toPromise().then(response => response)
+      .catch(this.handleError);
+  };
+
+  putPatient(patient : any): Promise<any> {
+    return this.http.put(this.server + "patient", patient, {
     })
       .toPromise().then(response => response)
       .catch(this.handleError);
