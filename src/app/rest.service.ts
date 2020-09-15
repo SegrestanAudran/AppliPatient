@@ -31,14 +31,14 @@ export class RestService {
   };
 
   getPractitioner(): Promise<any> {
-    return this.http.get(this.server + "practitioner/12345", {
+    return this.http.get(this.server + "practitioner/f333", {
     })
       .toPromise().then(response => response)
       .catch(this.handleError);
   };
 
   getPrescription(): Promise<any> {
-    return this.http.get(this.server + "medication-request", { /*?requester.identifier=f333*/
+    return this.http.get(this.server + "medication-request?subject.reference=Patient/12345", { /*?requester.identifier=f333*/
     })
       .toPromise().then(response => response)
       .catch(this.handleError);
