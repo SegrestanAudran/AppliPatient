@@ -8,6 +8,7 @@ import { PrescriptionComponent } from './prescription/prescription.component';
 import { appRoutingModule } from './app.routing';
 import { RestService } from './rest.service';
 import { HttpClientModule } from '@angular/common/http';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
     appRoutingModule,
     HttpClientModule
   ],
-  providers: [RestService],
+  providers: [RestService, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
