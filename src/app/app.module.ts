@@ -10,6 +10,8 @@ import { RestService } from './rest.service';
 import { HttpClientModule } from '@angular/common/http';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatListModule} from '@angular/material/list';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -25,7 +27,9 @@ import {MatMenuModule} from '@angular/material/menu';
     appRoutingModule,
     HttpClientModule,
     MatGridListModule,
-    MatMenuModule
+    MatMenuModule,
+    MatListModule,
+    NgbModule
   ],
   providers: [RestService],
   bootstrap: [AppComponent]
