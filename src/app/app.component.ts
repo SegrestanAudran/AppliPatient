@@ -11,6 +11,7 @@ export class AppComponent {
   title = 'appliPatient';
   patient: any;
   constructor(private service: RestService) { 
-    this.patient = service.getPatient();
+    service.getPatient().then(patient =>
+      this.patient = patient );
   }
 }
