@@ -1,11 +1,13 @@
 <p>prescription works!</p>
 {{medicationrequest[0]}}
-
-    
     
 <button mat-button [matMenuTriggerFor]="menu">Menu</button>
 <mat-menu #menu="matMenu">
     <div *ngFor="let p of medicationrequest">
-        <button mat-menu-item>{{p.id}}</button>
+        <button mat-menu-item (click)="show(p)" >{{p.id}}</button>
     </div>
 </mat-menu>
+
+<div *ngIf="showPrescription">
+    <p>{{prescription.medicationReference.display}} : (médicament prescris pour {{prescription.subject.display}})</p>
+</div>
