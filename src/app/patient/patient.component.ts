@@ -10,7 +10,8 @@ export class PatientComponent implements OnInit {
   patient: any;
   
   constructor(private service: RestService) { 
-    this.patient = service.getPatient();
+    service.getPatient().then(patient =>
+      this.patient = patient );
   }
 
   ngOnInit(): void {
