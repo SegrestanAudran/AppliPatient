@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import {MatSidenavModule} from '@angular/material/sidenav';
 import {RestService} from './rest.service';
 
 @Component({
