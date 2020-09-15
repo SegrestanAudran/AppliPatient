@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RestService } from '../rest.service';
 
 @Component({
   selector: 'app-prescription',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrescriptionComponent implements OnInit {
 
-  constructor() { }
+  medicationrequest: any;
+  showPrescription: boolean;
+  prescription: any;
+  
+  constructor(private service: RestService) { 
+    service.getPrescription().then(medicationrequest =>
+      this.medicationrequest = medicationrequest );
+      this.showPrescription = false;
+  }
 
   ngOnInit(): void {
+  }
+
+  show(p){
+    this.prescription = p;
+    this.showPrescription = true;
+    
   }
 
 }

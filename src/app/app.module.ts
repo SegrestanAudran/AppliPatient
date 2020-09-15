@@ -11,6 +11,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PatientEditorComponent } from './patient-editor/patient-editor.component';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatListModule} from '@angular/material/list';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +30,11 @@ import { PatientEditorComponent } from './patient-editor/patient-editor.componen
     BrowserAnimationsModule,
     appRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatGridListModule,
+    MatMenuModule,
+    MatListModule,
+    NgbModule
   ],
   providers: [RestService, DatePipe],
   bootstrap: [AppComponent]

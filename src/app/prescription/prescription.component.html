@@ -1,1 +1,17 @@
-<p>prescription works!</p>
+   
+<button mat-button [matMenuTriggerFor]="menu">Menu</button>
+<mat-menu #menu="matMenu">
+    <div *ngFor="let p of medicationrequest">
+        <button mat-menu-item (click)="show(p)" >{{p.id}}</button>
+    </div>
+</mat-menu>
+
+<div *ngIf="showPrescription">
+    <div>
+    <p>{{prescription.medicationReference.display}} : médicament prescris pour {{prescription.subject.display}} par Dr. {{prescription.requester.agent.display}}</p>
+    <p>Quantité prescrite : {{prescription.dispenseRequest.quantity.value}} {{prescription.dispenseRequest.quantity.unit}}</p>
+    <p>{{prescription.dosageInstruction.text}}</p>
+    <br>
+    <p>Prescription valide jusqu'au : {{prescription.dispenseRequest.validityPeriod.end}}</p>
+    </div>
+</div>
