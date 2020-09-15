@@ -14,16 +14,15 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     PatientComponent,
     ObservationComponent,
-    PrescriptionComponent,
-    HttpClientModule
+    PrescriptionComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     appRoutingModule,
-    RestService
+    HttpClientModule
   ],
-  providers: [],
+  providers: [RestService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
