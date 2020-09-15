@@ -1,4 +1,4 @@
-<form [formGroup]="patientForm">
+<form [formGroup]="patientForm" (ngSubmit)="onSubmit()">
     <label>
         Nom: <input type="text" formControlName="nom" [(ngModel)]="patient.name[0].family"><br>
     </label>
@@ -22,4 +22,6 @@
     <label>
         Numéro de téléphone: <input type="text" formControlName="tel" [(ngModel)]="patient.telecom[0].value"><br>
     </label>
+
+    <button type="submit" [disabled]="!patientForm.valid">Valider</button>
 </form>

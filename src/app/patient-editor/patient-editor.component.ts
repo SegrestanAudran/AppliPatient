@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { RestService } from '../rest.service';
 
 
@@ -20,13 +21,22 @@ export class PatientEditorComponent implements OnInit {
   
   patient: any;
   
-  constructor(private service: RestService) { 
+  constructor(private service: RestService, private router: Router) { 
     service.getPatient().then(patient =>
       this.patient = patient );   
       
     }
 
   ngOnInit(): void {
+  }
+
+  onSubmit() {
+    console.warn(this.patientForm.value);
+    this.service.putPatient(this.patient);
+    this.router.navigate(['/patient'])
+    .then(() => {
+      window.location.reload();
+    });
   }
 
 }
