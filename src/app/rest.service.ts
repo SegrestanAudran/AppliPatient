@@ -30,4 +30,11 @@ export class RestService {
       .toPromise().then(response => response)
       .catch(this.handleError);
   };
+
+  putPatient(patient:any): Promise<any> {
+    return this.http.put(this.server + "patient/12345",patient, {
+    })
+    .toPromise().then(response => response)
+    .catch(this.handleError);
+  }
 }

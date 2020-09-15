@@ -1,6 +1,6 @@
-import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RestService } from '../rest.service';
+
 
 @Component({
   selector: 'app-patient',
@@ -9,9 +9,8 @@ import { RestService } from '../rest.service';
 })
 export class PatientComponent implements OnInit {
   patient: any;
-  //datepipe: any;
   
-  constructor(private service: RestService, public datepipe: DatePipe) { 
+  constructor(private service: RestService) { 
     service.getPatient().then(patient =>
       this.patient = patient );   
       
@@ -20,7 +19,6 @@ export class PatientComponent implements OnInit {
 
   ngOnInit(): void {
         
-  }
-  
+  }  
 
 }

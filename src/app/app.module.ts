@@ -9,19 +9,23 @@ import { appRoutingModule } from './app.routing';
 import { RestService } from './rest.service';
 import { HttpClientModule } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+import { PatientEditorComponent } from './patient-editor/patient-editor.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PatientComponent,
     ObservationComponent,
-    PrescriptionComponent
+    PrescriptionComponent,
+    PatientEditorComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     appRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [RestService, DatePipe],
   bootstrap: [AppComponent]

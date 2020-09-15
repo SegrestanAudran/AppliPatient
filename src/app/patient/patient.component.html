@@ -3,7 +3,8 @@
     <p>Nom : {{patient.name[0].family}}</p>
     <p>Prénom : {{patient.name[0].given[0]}}, {{patient.name[0].given[1]}}</p>
     <p>Date de naissance : {{patient.birthDate | slice:0:10}}</p>
-    <p>Adresse : {{patient.address[0].text}}</p>
+    <p>Adresse : {{patient.address[0].line}}</p>
+    <p>Ville : {{patient.address[0].city}}</p>
     <p>Numéro de téléphone : {{patient.telecom[0].value}}</p>
 </div>
 
@@ -16,3 +17,5 @@
     </div>
 
 </div>
+
+<a routerLink='/patient/modifier'><button type="button" >Modifier mes informations</button></a>
