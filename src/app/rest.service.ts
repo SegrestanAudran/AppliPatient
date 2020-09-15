@@ -11,9 +11,6 @@ export class RestService {
 
   constructor(private http: HttpClient) { }
 
-  public getPatient() {
-    return this.patient;
-  }
 
   //Fonction de set du Header
   private setHeaders(user: string): HttpHeaders {
@@ -27,9 +24,8 @@ export class RestService {
     return Promise.reject(error.message || error);
   }
 
-  getfhirdata(): Promise<Patient> {
+  getPatient(): Promise<any> {
     return this.http.get(this.server + "patient/12345", {
-      headers: this.setHeaders(this.getPatient())
     })
       .toPromise().then(response => response)
       .catch(this.handleError);

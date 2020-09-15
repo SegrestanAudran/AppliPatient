@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import {RestService} from './rest.service';
 
 @Component({
   selector: 'app-root',
@@ -8,4 +9,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 })
 export class AppComponent {
   title = 'appliPatient';
+  patient: any;
+  constructor(private service: RestService) { 
+    this.patient = service.getPatient();
+  }
 }
