@@ -1,1 +1,26 @@
-<p>observation works!</p>
+<p>Entrez votre niveau de glycémie :</p>
+<input (keyup)="onKey($event)" type="integer" required minlength="1"> g/L
+<br>
+<br>
+
+<div class ="profile">
+    <b>Votre profil :</b>
+    <p>Nom : {{patient.name[0].family}}</p> 
+    <p>Prénom : {{patient.name[0].given}} </p>
+    <p>Date de naissance : {{patient.birthDate.substring(0,10)}}</p>
+    <p>Adresse : {{patient.address[0].text}}</p>
+    <p>Numéro de téléphone : {{patient.telecom[0].value}}</p>
+    <p>Médecin traitant : {{patient.generalPractitioner[0].id}}</p>
+</div> 
+
+<div class="profile-med">
+    <b>Profil médecin :</b>
+    <p>ID : {{practicien.id}}</p>
+    <p>Nom : {{practicien.name[0].family}}</p>
+    <p>Prénom : {{practicien.name[0].text.substring(0,7)}}</p>
+    <p>Numéro CNS : {{practicien.identifier[0].value}}</p>
+    <p>Téléphone : {{practicien.telecom[0].value}}</p>
+    <p>Adresse : {{practicien.address[0].line}}, {{practicien.address[0].city}}</p>
+</div>
+    
+<button (click)="onSend()">Envoyer</button>
