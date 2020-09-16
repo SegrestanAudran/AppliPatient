@@ -1,27 +1,113 @@
-<form [formGroup]="patientForm" (ngSubmit)="onSubmit()">
-    <label>
-        Nom: <input type="text" formControlName="nom" [(ngModel)]="patient.name[0].family"><br>
-    </label>
+<!DOCTYPE html>
+<html>
 
-    <label>
-        Prénom: <input type="text" formControlName="prenom" [(ngModel)]="patient.name[0].given[0]"><br>
-    </label>
-    
-    <label>
-        Date de naissance: <input type="text" formControlName="dNaissance" [(ngModel)]="patient.birthDate"><br>
-    </label>
-    
-    <label>
-        Adresse: <input type="text" formControlName="adresse" [(ngModel)]="patient.address[0].line"><br>
-    </label>
+<head>
+     <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
 
-    <label>
-        Ville: <input type="text" formControlName="ville" [(ngModel)]="patient.address[0].city"><br>
-    </label>
-    
-    <label>
-        Numéro de téléphone: <input type="text" formControlName="tel" [(ngModel)]="patient.telecom[0].value"><br>
-    </label>   
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <button type="submit" [disabled]="!patientForm.valid">Valider</button>
-</form>
+    <link rel="stylesheet" href="/assets/css/paper-dashboard.css">
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+</head>
+
+
+<body>
+    <div class="wrapper">
+        <div class="sidebar" data-color="white" data-active-color="danger">
+            <sidebar-cmp>
+                <div class="sidebar-wrapper">
+                    <div class="logo">
+                        <a href="#" class="simple-text logo-normal">
+                            <div class="logo-image-small">
+                                <img src="assets/images/logo.png">
+                              </div>
+                        </a>
+                    </div>
+                    
+                    <ul class="nav">
+            
+                        <li routerlinkactive="active" class="active">
+                            <a routerLink="/patient">
+                                <i class="nc-icon nc-app"></i>
+                                <p>Patient</p>
+                            </a>
+            
+                            <a routerLink="/observation">
+                              <i class="nc-icon nc-app"></i>
+                              <p>Observation</p>
+                          </a>
+            
+                          <a routerLink="/prescription">
+                            <i class="nc-icon nc-app"></i>
+                            <p>Prescription</p>
+                        </a>
+            
+                        </li>
+            
+                        
+                    </ul>
+                  </div>
+            </sidebar-cmp>
+        </div>
+        <div class="main-panel">
+            <navbar-cmp></navbar-cmp>
+            <div class="content">
+                <router-outlet>
+                    <div class="row">
+                        <div class="col-md-12">
+                          <div class="card">
+                            <div class="card-header">
+                              <h5 class="card-title">Modifier mes informations</h5>
+                            </div>
+                            <div class="card-body">
+                              
+                                <form [formGroup]="patientForm" (ngSubmit)="onSubmit()">
+                                    <label>
+                                        Nom: <input type="text" formControlName="nom" [(ngModel)]="patient.name[0].family"><br>
+                                    </label>
+                                
+                                    <label>
+                                        Prénom: <input type="text" formControlName="prenom" [(ngModel)]="patient.name[0].given[0]"><br>
+                                    </label>
+                                    
+                                    <label>
+                                        Date de naissance: <input type="text" formControlName="dNaissance" [(ngModel)]="patient.birthDate"><br>
+                                    </label>
+                                    
+                                    <label>
+                                        Adresse: <input type="text" formControlName="adresse" [(ngModel)]="patient.address[0].line"><br>
+                                    </label>
+                                
+                                    <label>
+                                        Ville: <input type="text" formControlName="ville" [(ngModel)]="patient.address[0].city"><br>
+                                    </label>
+                                    
+                                    <label>
+                                        Numéro de téléphone: <input type="text" formControlName="tel" [(ngModel)]="patient.telecom[0].value"><br>
+                                    </label>   <br>
+                                
+                                    <button type="submit" [disabled]="!patientForm.valid">Valider</button>
+                                </form>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                </router-outlet>
+            </div>
+            <footer-cmp></footer-cmp>
+        </div>
+    </div>
+    <fixedplugin-cmp></fixedplugin-cmp>    
+</body>
+</html>
+
+
+

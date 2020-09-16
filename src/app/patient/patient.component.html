@@ -1,11 +1,103 @@
-<div class="card">
-    <h1>Mon profil</h1>
-    <p>Nom : {{patient.name[0].family}}</p>
-    <p>Prénom : {{patient.name[0].given[0]}}, {{patient.name[0].given[1]}}</p>
-    <p>Date de naissance : {{patient.birthDate | slice:0:10}}</p>
-    <p>Adresse : {{patient.address[0].line}}</p>
-    <p>Ville : {{patient.address[0].city}}</p>
-    <p>Numéro de téléphone : {{patient.telecom[0].value}}</p>
-</div>
+<!DOCTYPE html>
+<html>
+<head>
+ <!-- Required meta tags -->
+ <meta charset="utf-8">
+ <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
 
-<a routerLink='/patient/modifier'><button type="button" >Modifier mes informations</button></a>
+ <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+<link rel="stylesheet" href="/assets/css/paper-dashboard.css">
+<link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+
+<!--     Fonts and icons     -->
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+</head>
+
+<body>
+
+    <div class="wrapper">
+
+        <div class="sidebar" data-color="white"  data-active-color="danger">
+            <sidebar-cmp>
+              
+              <div class="sidebar-wrapper">
+                <div class="logo">
+                    <a href="#" class="simple-text logo-normal">
+                        <div class="logo-image-small">
+                            <img src="assets/images/logo.png">
+                          </div>
+                    </a>
+                </div>
+                
+                <ul class="nav">
+        
+                    <li routerlinkactive="active" class="active">
+                        <a routerLink="/patient">
+                            <i class="nc-icon nc-app"></i>
+                            <p>Patient</p>
+                        </a>
+        
+                        <a routerLink="/observation">
+                          <i class="nc-icon nc-app"></i>
+                          <p>Observation</p>
+                      </a>
+        
+                      <a routerLink="/prescription">
+                        <i class="nc-icon nc-app"></i>
+                        <p>Prescription</p>
+                    </a>
+        
+                    </li>
+        
+                    
+                </ul>
+              </div>
+            </sidebar-cmp>
+        </div>
+
+
+
+
+        <div class="main-panel"> 
+            <navbar-cmp></navbar-cmp>
+            <div class="content">
+                <router-outlet>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title">Mon Profil</h5>
+                            </div>
+
+                            <div class="card-body">
+                                <p>Nom : {{patient.name[0].family}}</p>
+                                <p>Prénom : {{patient.name[0].given[0]}}, {{patient.name[0].given[1]}}</p>
+                                <p>Date de naissance : {{patient.birthDate | slice:0:10}}</p>
+                                <p>Adresse : {{patient.address[0].line}}</p>
+                                <p>Ville : {{patient.address[0].city}}</p>
+                                <p>Numéro de téléphone : {{patient.telecom[0].value}}</p>
+                    
+                                <a routerLink='/patient/modifier'><button type="button">Modifier mes informations</button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </router-outlet>
+            </div>
+
+            <footer-cmp></footer-cmp>
+
+        </div>
+
+        <fixedplugin-cmp></fixedplugin-cmp>
+
+
+    </div>
+   
+
+
+</body>
+</html>
