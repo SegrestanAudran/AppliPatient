@@ -44,8 +44,14 @@ export class RestService {
       .catch(this.handleError);
   };
 
-  putObservation(observation : any): Promise<any> {
-    return this.http.put(this.server + "observation", observation, {
+  postObservation(observation : any): Promise<any> {
+    return this.http.post(this.server + "observation", observation)
+      .toPromise().then(response => response)
+      .catch(this.handleError);
+  };
+
+  getObservation(observation : any): Promise<any> {
+    return this.http.get(this.server + "observation/f001", {
     })
       .toPromise().then(response => response)
       .catch(this.handleError);
