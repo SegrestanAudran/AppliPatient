@@ -28,6 +28,7 @@ export class ObservationComponent implements OnInit {
   }
 
   onSend() {
+    //let time = "2021-11-09 11:43:00";
     var date = new Date();
     this.observation = {
       "resourceType": "Observation",
@@ -49,9 +50,9 @@ export class ObservationComponent implements OnInit {
         ]
       },
       "subject": {
-        "id": "Patient/12345"
+        "reference": "Patient/12345"
       },
-      "issued": date,
+      "issued":  date,//time
       "valueQuantity": {
         "value": this.taux,
         "unit": "mmol/l",

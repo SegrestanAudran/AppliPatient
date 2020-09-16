@@ -11,6 +11,7 @@ export class PrescriptionComponent implements OnInit {
   medicationrequest: any;
   showPrescription: boolean;
   prescription: any;
+
   
   constructor(private service: RestService) { 
     service.getPrescription().then(medicationrequest =>
@@ -19,7 +20,10 @@ export class PrescriptionComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const date = Date.now;
   }
+
+
 
   show(p){
     this.prescription = p;
