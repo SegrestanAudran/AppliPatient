@@ -3,7 +3,42 @@
 <br>
 <br>
 
-<div class ="profile">
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Votre profil</h5>
+            </div>
+            <div class="card-body">
+                <p>Nom : {{patient.name[0].family}}</p>
+                <p>Prénom : {{patient.name[0].given}} </p>
+                <p>Date de naissance : {{patient.birthDate.substring(0,10)}}</p>
+                <p>Adresse : {{patient.address[0].text}}</p>
+                <p>Numéro de téléphone : {{patient.telecom[0].value}}</p>
+                <p>Médecin traitant : {{practicien.name[0].prefix}} {{practicien.name[0].text}}</p>
+
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Profil médecin</h5>
+            </div>
+            <div class="card-body">
+                <p>Nom : {{patient.name[0].family}}</p>
+                <p>Prénom : {{patient.name[0].given}} </p>
+                <p>Date de naissance : {{patient.birthDate.substring(0,10)}}</p>
+                <p>Adresse : {{patient.address[0].text}}</p>
+                <p>Numéro de téléphone : {{patient.telecom[0].value}}</p>
+                <p>Médecin traitant : {{practicien.name[0].prefix}} {{practicien.name[0].text}}</p>
+                <button (click)="onSend()">Envoyer</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <div class ="profile">
     <b>Votre profil :</b>
     <p>Nom : {{patient.name[0].family}}</p> 
     <p>Prénom : {{patient.name[0].given}} </p>
@@ -23,4 +58,4 @@
     <p>Adresse : {{practicien.address[0].line}}, {{practicien.address[0].city}}</p>
 </div>
     
-<button (click)="onSend()">Envoyer</button>
+<button (click)="onSend()">Envoyer</button> -->
