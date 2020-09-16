@@ -23,8 +23,6 @@ export class PrescriptionComponent implements OnInit {
     const date = Date.now;
   }
 
-
-
   show(p){
     this.prescription = p;
     if(this.prescription.status = "active"){

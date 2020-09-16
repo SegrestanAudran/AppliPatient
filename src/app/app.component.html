@@ -3,12 +3,14 @@
       <div class="sidebar" data-color="white"  data-active-color="danger">
           <sidebar-cmp>
             <div class="sidebar-wrapper">
-              <div class="logo">
-                  <a href="#" class="simple-text logo-normal">
-                      <div class="logo-image-small">
-                          <img src="assets/images/logo.png">
-                        </div>
-                  </a>
+              <div class="logo" >
+                  <!-- <a href="#" class="simple-text logo-normal">
+                      <div class="logo-image-small"> -->
+                        
+                          <img src="assets/images/logo.png" (click)="show()">
+                        
+                        <!-- </div>
+                  </a> -->
               </div>
               <ul class="nav">
                   <li routerlinkactive="active" class="active">
@@ -54,12 +56,13 @@
               
           </navbar-cmp>
           <div class="content">
-              <router-outlet></router-outlet>
-              
+              <router-outlet></router-outlet>  
           </div>
+            <img *ngIf="showEasteregg" class="gifEasterEgg" src='./assets/images/bob_l_eponge_dance.gif'>
           <footer-cmp></footer-cmp>
       </div>
   </div>
+
   <fixedplugin-cmp></fixedplugin-cmp>
 </body>
 
