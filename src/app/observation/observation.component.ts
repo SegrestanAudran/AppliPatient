@@ -49,7 +49,7 @@ export class ObservationComponent implements OnInit {
         ]
       },
       "subject": {
-        "id": "12345"
+        "id": "Patient/12345"
       },
       "issued": "2013-04-03T15:30:10+01:00",
       "valueQuantity": {

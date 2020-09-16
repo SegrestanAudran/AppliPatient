@@ -2,7 +2,8 @@
 <button mat-button [matMenuTriggerFor]="menu">Menu</button>
 <mat-menu #menu="matMenu">
     <div *ngFor="let p of medicationrequest">
-        <button mat-menu-item (click)="show(p)" >{{p.id}}</button>
+        <button *ngIf="p.status=='active'" mat-menu-item (click)="show(p)" >{{p.authoredOn | slice:0:10}} Valide</button>
+        <button *ngIf="p.status!='active'" mat-stroked-button disabled>{{p.authoredOn | slice:0:10}} Annulé</button>
     </div>
 </mat-menu>
 
@@ -12,6 +13,6 @@
     <p>Quantité prescrite : {{prescription.dispenseRequest.quantity.value}} {{prescription.dispenseRequest.quantity.unit}}</p>
     <p>{{prescription.dosageInstruction.text}}</p>
     <br>
-    <p>Prescription valide jusqu'au : {{prescription.dispenseRequest.validityPeriod.end}}</p>
+    <p>Prescription valide jusqu'au : {{prescription.dispenseRequest.validityPeriod.end | slice:0:10}}</p>
     </div>
 </div>

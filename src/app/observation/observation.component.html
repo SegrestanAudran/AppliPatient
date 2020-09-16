@@ -10,7 +10,7 @@
     <p>Date de naissance : {{patient.birthDate.substring(0,10)}}</p>
     <p>Adresse : {{patient.address[0].text}}</p>
     <p>Numéro de téléphone : {{patient.telecom[0].value}}</p>
-    <p>Médecin traitant : {{patient.generalPractitioner[0].id}}</p>
+    <p>Médecin traitant : {{practicien.name[0].prefix}} {{practicien.name[0].text}}</p>
 </div> 
 
 <div class="profile-med">
