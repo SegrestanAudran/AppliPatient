@@ -16,7 +16,6 @@
                 <p>Date de naissance : {{patient.birthDate.substring(0,10)}}</p>
                 <p>Adresse : {{patient.address[0].text}}</p>
                 <p>Numéro de téléphone : {{patient.telecom[0].value}}</p>
-                <p>Médecin traitant : {{practicien.name[0].prefix}} {{practicien.name[0].text}}</p>
 
             </div>
         </div>
@@ -38,15 +37,6 @@
     </div>
 </div>
 
-<!-- <div class ="profile">
-    <b>Votre profil :</b>
-    <p>Nom : {{patient.name[0].family}}</p> 
-    <p>Prénom : {{patient.name[0].given}} </p>
-    <p>Date de naissance : {{patient.birthDate.substring(0,10)}}</p>
-    <p>Adresse : {{patient.address[0].text}}</p>
-    <p>Numéro de téléphone : {{patient.telecom[0].value}}</p>
-    <!-- <p>Médecin traitant : {{practicien?id=f333.name[0].prefix}} {{practicien?id=f333.name[0].text}}</p> -->
-</div> 
 
 <div class="profile-med">
     <div *ngFor="let p of practicien">
