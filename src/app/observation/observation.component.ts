@@ -12,11 +12,17 @@ export class ObservationComponent implements OnInit {
   practicien: any;
   observation: any;
   date : any;
+  showPracticien: boolean;
+  practicienActif: any;
+
+  
   constructor(private service: RestService) {
     service.getPatient().then(patient =>
       this.patient = patient);
+    
     service.getPractitioner().then(practicien =>
       this.practicien = practicien);
+    this.showPracticien = false;
   }
 
   ngOnInit() {
@@ -79,5 +85,10 @@ export class ObservationComponent implements OnInit {
     }
     console.log(this.observation);
     this.service.postObservation(this.observation).then(data => { console.log(data); });
+  }
+
+  show(p){
+    this.practicienActif = p;
+    this.showPracticien = true;
   }
 }

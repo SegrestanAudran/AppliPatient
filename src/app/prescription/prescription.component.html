@@ -9,10 +9,12 @@
 
 <div *ngIf="showPrescription">
     <div>
-    <p>{{prescription.medicationReference.display}} : médicament prescris pour {{prescription.subject.display}} par Dr. {{prescription.requester.agent.display}}</p>
-    <p>Quantité prescrite : {{prescription.dispenseRequest.quantity.value}} {{prescription.dispenseRequest.quantity.unit}}</p>
-    <p>{{prescription.dosageInstruction.text}}</p>
-    <br>
-    <p>Prescription valide jusqu'au : {{prescription.dispenseRequest.validityPeriod.end | slice:0:10}}</p>
+        <p>{{prescription.medicationReference.display}} : médicament prescris pour {{prescription.subject.display}} par
+            Dr. {{prescription.requester.agent.display}}</p>
+        <p>Quantité prescrite : {{prescription.dispenseRequest.quantity.value}}
+            {{prescription.dispenseRequest.quantity.unit}}</p>
+        <p>{{prescription.dosageInstruction.text}}</p>
+        <br>
+        <p>Prescription valide jusqu'au : {{prescription.dispenseRequest.validityPeriod.end | slice:0:10}}</p>
     </div>
 </div>

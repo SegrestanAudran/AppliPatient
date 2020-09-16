@@ -1,5 +1,5 @@
 <p>Entrez votre niveau de glycémie :</p>
-<input (keyup)="onKey($event)" type="integer" required minlength="1"> g/L
+<input (keyup)="onKey($event)" type="integer" required minlength="1"> mol/L
 <br>
 <br>
 
@@ -10,17 +10,39 @@
     <p>Date de naissance : {{patient.birthDate.substring(0,10)}}</p>
     <p>Adresse : {{patient.address[0].text}}</p>
     <p>Numéro de téléphone : {{patient.telecom[0].value}}</p>
-    <p>Médecin traitant : {{practicien.name[0].prefix}} {{practicien.name[0].text}}</p>
+    <!-- <p>Médecin traitant : {{practicien?id=f333.name[0].prefix}} {{practicien?id=f333.name[0].text}}</p> -->
 </div> 
 
 <div class="profile-med">
-    <b>Profil médecin :</b>
-    <p>ID : {{practicien.id}}</p>
-    <p>Nom : {{practicien.name[0].family}}</p>
-    <p>Prénom : {{practicien.name[0].text.substring(0,7)}}</p>
-    <p>Numéro CNS : {{practicien.identifier[0].value}}</p>
-    <p>Téléphone : {{practicien.telecom[0].value}}</p>
-    <p>Adresse : {{practicien.address[0].line}}, {{practicien.address[0].city}}</p>
+    <div *ngFor="let p of practicien">
+        <div *ngIf="p.id=='f333'">
+            <b>Profil médecin :</b>
+            <p>ID : {{p.id}}</p>
+            <p>Nom : {{p.name[0].family}}</p>
+            <p>Prénom : {{p.name[0].text.substring(0,7)}}</p>
+            <p>Numéro CNS : {{p.identifier[0].value}}</p>
+            <p>Téléphone : {{p.telecom[0].value}}</p>
+            <p>Adresse : {{p.address[0].line}}, {{p.address[0].city}}</p>
+        </div>
+    </div>
+</div>
+
+<button mat-button [matMenuTriggerFor]="menu">Menu</button>
+<mat-menu #menu="matMenu">
+    <div *ngFor="let p of practicien">
+        <button *ngIf="p.active" mat-menu-item (click)="show(p)" >{{p.name[0].text}} Actif</button>
+    </div>
+</mat-menu>
+<div *ngIf="showPracticien">
+    <div>
+        <b>Médecin disponible :</b>
+            <p>ID : {{practicienActif.id}}</p>
+            <p>Nom : {{practicienActif.name[0].family}}</p>
+            <p>Prénom : {{practicienActif.name[0].text.substring(0,7)}}</p>
+            <p>Numéro CNS : {{practicienActif.identifier[0].value}}</p>
+            <p>Téléphone : {{practicienActif.telecom[0].value}}</p>
+            <p>Adresse : {{practicienActif.address[0].line}}, {{practicienActif.address[0].city}}</p>
+    </div>
 </div>
     
 <button (click)="onSend()">Envoyer</button>
