@@ -30,9 +30,6 @@ export class ObservationComponent implements OnInit {
   onSend() {
     var date = new Date();
     this.observation = {
-      "text": {
-        "status": "generated"
-      },
       "resourceType": "Observation",
       "identifier": [
         {

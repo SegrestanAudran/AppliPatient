@@ -1,0 +1,27 @@
+<form [formGroup]="patientForm" (ngSubmit)="onSubmit()">
+    <label>
+        Nom: <input type="text" formControlName="nom" [(ngModel)]="patient.name[0].family"><br>
+    </label>
+
+    <label>
+        Prénom: <input type="text" formControlName="prenom" [(ngModel)]="patient.name[0].given[0]"><br>
+    </label>
+    
+    <label>
+        Date de naissance: <input type="text" formControlName="dNaissance" [(ngModel)]="patient.birthDate"><br>
+    </label>
+    
+    <label>
+        Adresse: <input type="text" formControlName="adresse" [(ngModel)]="patient.address[0].line"><br>
+    </label>
+
+    <label>
+        Ville: <input type="text" formControlName="ville" [(ngModel)]="patient.address[0].city"><br>
+    </label>
+    
+    <label>
+        Numéro de téléphone: <input type="text" formControlName="tel" [(ngModel)]="patient.telecom[0].value"><br>
+    </label>   
+
+    <button type="submit" [disabled]="!patientForm.valid">Valider</button>
+</form>
