@@ -1,4 +1,4 @@
-import { Component, Renderer2, ElementRef, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RestService } from '../rest.service';
 
 @Component({
@@ -27,12 +27,11 @@ export class ObservationComponent implements OnInit {
   }
 
   onSend() {
-    
+
     this.observation = {
-      "id": "",
       "text": {
         "status": "generated"
-        },
+      },
       "resourceType": "Observation",
       "identifier": [
         {
@@ -80,6 +79,6 @@ export class ObservationComponent implements OnInit {
       ]
     }
     console.log(this.observation);
-    this.service.postObservation(this.observation).then(data => {console.log(data);});
+    this.service.postObservation(this.observation).then(data => { console.log(data); });
   }
 }

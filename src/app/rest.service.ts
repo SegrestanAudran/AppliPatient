@@ -45,7 +45,8 @@ export class RestService {
   };
 
   postObservation(observation : any): Promise<any> {
-    return this.http.post(this.server + "observation", observation)
+    console.log(this.server + "observation")
+    return this.http.post(this.server + "observation", observation, {headers : {"Content-Type" : "application/json"}})
       .toPromise().then(response => response)
       .catch(this.handleError);
   };
