@@ -11,6 +11,7 @@ export class ObservationComponent implements OnInit {
   patient: any;
   practicien: any;
   observation: any;
+  date : any;
   constructor(private service: RestService) {
     service.getPatient().then(patient =>
       this.patient = patient);
@@ -23,11 +24,11 @@ export class ObservationComponent implements OnInit {
 
   taux = 0;
   onKey(event: any) {
-    this.taux = event.target.value;
+    this.taux = parseInt(event.target.value);
   }
 
   onSend() {
-
+    var date = new Date();
     this.observation = {
       "text": {
         "status": "generated"
@@ -53,7 +54,7 @@ export class ObservationComponent implements OnInit {
       "subject": {
         "id": "12345"
       },
-      "issued": "2013-04-03T15:30:10+01:00",
+      "issued": date,
       "valueQuantity": {
         "value": this.taux,
         "unit": "mmol/l",
