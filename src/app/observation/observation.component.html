@@ -16,7 +16,7 @@
                 <p>Date de naissance : {{patient.birthDate.substring(0,10)}}</p>
                 <p>Adresse : {{patient.address[0].text}}</p>
                 <p>Numéro de téléphone : {{patient.telecom[0].value}}</p>
-                <p>Médecin traitant : {{practicien.name[0].prefix}} {{practicien.name[0].text}}</p>
+                <!-- <p>Médecin traitant : {{practicien.name[0].prefix}} {{practicien.name[0].text}}</p> -->
 
             </div>
         </div>
@@ -26,58 +26,65 @@
                 <h5 class="card-title">Profil médecin</h5>
             </div>
             <div class="card-body">
-                <p>Nom : {{patient.name[0].family}}</p>
-                <p>Prénom : {{patient.name[0].given}} </p>
-                <p>Date de naissance : {{patient.birthDate.substring(0,10)}}</p>
-                <p>Adresse : {{patient.address[0].text}}</p>
-                <p>Numéro de téléphone : {{patient.telecom[0].value}}</p>
-                <p>Médecin traitant : {{practicien.name[0].prefix}} {{practicien.name[0].text}}</p>
-                <button (click)="onSend()">Envoyer</button>
+                <div *ngFor="let p of practicien">
+                    <div *ngIf="p.id=='f333'">
+                        <p>ID : {{p.id}}</p>
+                        <p>Nom : {{p.name[0].family}}</p>
+                        <p>Prénom : {{p.name[0].text.substring(0,7)}}</p>
+                        <p>Numéro CNS : {{p.identifier[0].value}}</p>
+                        <p>Téléphone : {{p.telecom[0].value}}</p>
+                        <p>Adresse : {{p.address[0].line}}, {{p.address[0].city}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<button mat-button [matMenuTriggerFor]="menu">Menu</button>
+<mat-menu #menu="matMenu">
+    <div *ngFor="let p of practicien">
+        <button *ngIf="p.active" mat-menu-item (click)="show(p)">{{p.name[0].text}} Actif</button>
+    </div>
+</mat-menu>
+<div *ngIf="showPracticien">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+
+                <div class="card-header">
+                    <h5 class="card-title">Médecin disponible</h5>
+                </div>
+                <div class="card-body">
+                    <div>
+                        <p>ID : {{practicienActif.id}}</p>
+                        <p>Nom : {{practicienActif.name[0].family}}</p>
+                        <p>Prénom : {{practicienActif.name[0].text.substring(0,7)}}</p>
+                        <p>Numéro CNS : {{practicienActif.identifier[0].value}}</p>
+                        <p>Téléphone : {{practicienActif.telecom[0].value}}</p>
+                        <p>Adresse : {{practicienActif.address[0].line}}, {{practicienActif.address[0].city}}</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-<!-- <div class ="profile">
-    <b>Votre profil :</b>
-    <p>Nom : {{patient.name[0].family}}</p> 
-    <p>Prénom : {{patient.name[0].given}} </p>
-    <p>Date de naissance : {{patient.birthDate.substring(0,10)}}</p>
-    <p>Adresse : {{patient.address[0].text}}</p>
-    <p>Numéro de téléphone : {{patient.telecom[0].value}}</p>
-    <!-- <p>Médecin traitant : {{practicien?id=f333.name[0].prefix}} {{practicien?id=f333.name[0].text}}</p> -->
-</div> 
-
-<div class="profile-med">
-    <div *ngFor="let p of practicien">
-        <div *ngIf="p.id=='f333'">
-            <b>Profil médecin :</b>
-            <p>ID : {{p.id}}</p>
-            <p>Nom : {{p.name[0].family}}</p>
-            <p>Prénom : {{p.name[0].text.substring(0,7)}}</p>
-            <p>Numéro CNS : {{p.identifier[0].value}}</p>
-            <p>Téléphone : {{p.telecom[0].value}}</p>
-            <p>Adresse : {{p.address[0].line}}, {{p.address[0].city}}</p>
-        </div>
-    </div>
-</div>
-
-<button mat-button [matMenuTriggerFor]="menu">Menu</button>
+<!-- <button mat-button [matMenuTriggerFor]="menu">Menu</button>
 <mat-menu #menu="matMenu">
     <div *ngFor="let p of practicien">
-        <button *ngIf="p.active" mat-menu-item (click)="show(p)" >{{p.name[0].text}} Actif</button>
+        <button *ngIf="p.active" mat-menu-item (click)="show(p)">{{p.name[0].text}} Actif</button>
     </div>
 </mat-menu>
 <div *ngIf="showPracticien">
     <div>
         <b>Médecin disponible :</b>
-            <p>ID : {{practicienActif.id}}</p>
-            <p>Nom : {{practicienActif.name[0].family}}</p>
-            <p>Prénom : {{practicienActif.name[0].text.substring(0,7)}}</p>
-            <p>Numéro CNS : {{practicienActif.identifier[0].value}}</p>
-            <p>Téléphone : {{practicienActif.telecom[0].value}}</p>
-            <p>Adresse : {{practicienActif.address[0].line}}, {{practicienActif.address[0].city}}</p>
+        <p>ID : {{practicienActif.id}}</p>
+        <p>Nom : {{practicienActif.name[0].family}}</p>
+        <p>Prénom : {{practicienActif.name[0].text.substring(0,7)}}</p>
+        <p>Numéro CNS : {{practicienActif.identifier[0].value}}</p>
+        <p>Téléphone : {{practicienActif.telecom[0].value}}</p>
+        <p>Adresse : {{practicienActif.address[0].line}}, {{practicienActif.address[0].city}}</p>
     </div>
-</div>
-    
+</div> -->
+
 <button (click)="onSend()">Envoyer</button> -->
