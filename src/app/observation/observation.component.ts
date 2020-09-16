@@ -24,16 +24,12 @@ export class ObservationComponent implements OnInit {
 
   taux = 0;
   onKey(event: any) {
-    this.taux = event.target.value;
+    this.taux = parseInt(event.target.value);
   }
 
   onSend() {
     
     this.observation = {
-      "id": "",
-      "text": {
-        "status": "generated"
-        },
       "resourceType": "Observation",
       "identifier": [
         {
