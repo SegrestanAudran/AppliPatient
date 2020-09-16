@@ -19,19 +19,15 @@
 
     <div class="wrapper">
 
-        <div class="sidebar" data-color="white">
-            <!--
-            Tip 1: You can change the color of the sidebar using: data-color="white | black"
-        
-            -->
-        
-              <div class="logo">
-                <a href="#" class="simple-text logo-normal">
-                    CRABE
-                </a>
-              </div>
-        
+        <div class="sidebar" data-color="white"  data-active-color="danger">
+            <sidebar-cmp>
+              
               <div class="sidebar-wrapper">
+                <div class="logo">
+                    <a href="#" class="simple-text logo-normal">
+                        CRABE
+                    </a>
+                </div>
                 
                 <ul class="nav">
         
@@ -56,38 +52,45 @@
                     
                 </ul>
               </div>
+            </sidebar-cmp>
         </div>
 
+
+
+
         <div class="main-panel"> 
+            <navbar-cmp></navbar-cmp>
             <div class="content">
+                <router-outlet>
+
                 <div class="row">
-                    
-                        <div class="card card-user">
+                    <div class="col-md-12">
+                        <div class="card">
                             <div class="card-header">
-                                <h1>Mon profil</h1>
+                                <h5 class="card-title">Mon Profil</h5>
+                            </div>
+
+                            <div class="card-body">
                                 <p>Nom : {{patient.name[0].family}}</p>
                                 <p>Prénom : {{patient.name[0].given[0]}}, {{patient.name[0].given[1]}}</p>
                                 <p>Date de naissance : {{patient.birthDate | slice:0:10}}</p>
                                 <p>Adresse : {{patient.address[0].line}}</p>
                                 <p>Ville : {{patient.address[0].city}}</p>
                                 <p>Numéro de téléphone : {{patient.telecom[0].value}}</p>
-
-                                <a routerLink='/patient/modifier'><button type="button" >Modifier mes informations</button></a>
+                    
+                                <a routerLink='/patient/modifier'><button type="button">Modifier mes informations</button></a>
                             </div>
                         </div>
-                    
-                    
+                    </div>
                 </div>
-
-                
-
+                </router-outlet>
             </div>
 
-            
+            <footer-cmp></footer-cmp>
 
         </div>
 
-        
+        <fixedplugin-cmp></fixedplugin-cmp>
 
 
     </div>
