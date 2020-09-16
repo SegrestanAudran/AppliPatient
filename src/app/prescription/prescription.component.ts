@@ -23,8 +23,9 @@ export class PrescriptionComponent implements OnInit {
 
   show(p){
     this.prescription = p;
-    this.showPrescription = true;
-    
+    if(this.prescription.status = "active"){
+      this.showPrescription = true;
+    }
   }
 
 }

@@ -11,12 +11,7 @@ export class RestService {
   constructor(private http: HttpClient) { }
 
 
-  //Fonction de set du Header
-  private setHeaders(user: string): HttpHeaders {
-    var headers = new HttpHeaders({ 'X-User': user});
-
-    return headers;
-  }
+ 
 
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error);
@@ -50,8 +45,16 @@ export class RestService {
       .catch(this.handleError);
   };
 
-  putObservation(observation : any): Promise<any> {
-    return this.http.put(this.server + "observation", observation, {
+  postObservation(observation : any): Promise<any> {
+    return this.http.post(this.server + "observation", observation,{
+      headers : {'Content-Type': 'application/json'}
+    })
+      .toPromise().then(response => response)
+      .catch(this.handleError);
+  };
+
+  getObservation(observation : any): Promise<any> {
+    return this.http.get(this.server + "observation/f001", {
     })
       .toPromise().then(response => response)
       .catch(this.handleError);

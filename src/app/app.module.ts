@@ -14,7 +14,7 @@ import { PatientEditorComponent } from './patient-editor/patient-editor.componen
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatListModule} from '@angular/material/list';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+//import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -33,8 +33,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
     MatGridListModule,
     MatMenuModule,
-    MatListModule,
-    NgbModule
+    MatListModule//,
+    //NgbModule
   ],
   providers: [RestService, DatePipe],
   bootstrap: [AppComponent]
