@@ -14,7 +14,6 @@ import { PatientEditorComponent } from './patient-editor/patient-editor.componen
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatListModule} from '@angular/material/list';
-//import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -33,11 +32,10 @@ import {MatListModule} from '@angular/material/list';
     ReactiveFormsModule,
     MatGridListModule,
     MatMenuModule,
-    MatListModule//,
-    //NgbModule
+    MatListModule
   ],
   providers: [RestService, DatePipe],
   bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA ]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

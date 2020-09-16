@@ -1,5 +1,4 @@
-import { Component, Renderer2, ElementRef, OnInit } from '@angular/core';
-import { Observation } from 'fhirdata';
+import { Component, OnInit } from '@angular/core';
 import { RestService } from '../rest.service';
 
 @Component({
@@ -12,11 +11,18 @@ export class ObservationComponent implements OnInit {
   patient: any;
   practicien: any;
   observation: any;
+  date : any;
+  showPracticien: boolean;
+  practicienActif: any;
+
+  
   constructor(private service: RestService) {
     service.getPatient().then(patient =>
       this.patient = patient);
+    
     service.getPractitioner().then(practicien =>
       this.practicien = practicien);
+    this.showPracticien = false;
   }
 
   ngOnInit() {
@@ -28,7 +34,8 @@ export class ObservationComponent implements OnInit {
   }
 
   onSend() {
-    
+    //let time = "2021-11-09 11:43:00";
+    var date = new Date();
     this.observation = {
       "resourceType": "Observation",
       "identifier": [
@@ -49,9 +56,9 @@ export class ObservationComponent implements OnInit {
         ]
       },
       "subject": {
-        "id": "Patient/12345"
+        "reference": "Patient/12345"
       },
-      "issued": "2013-04-03T15:30:10+01:00",
+      "issued":  date,//time
       "valueQuantity": {
         "value": this.taux,
         "unit": "mmol/l",
@@ -77,6 +84,11 @@ export class ObservationComponent implements OnInit {
       ]
     }
     console.log(this.observation);
-    this.service.postObservation(this.observation).then(data => {console.log(data);});
+    this.service.postObservation(this.observation).then(data => { console.log(data); });
+  }
+
+  show(p){
+    this.practicienActif = p;
+    this.showPracticien = true;
   }
 }
