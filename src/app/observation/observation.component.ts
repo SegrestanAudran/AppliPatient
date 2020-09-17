@@ -14,6 +14,7 @@ export class ObservationComponent implements OnInit {
   date : any;
   showPracticien: boolean;
   practicienActif: any;
+  envoie: boolean;
 
   
   constructor(private service: RestService) {
@@ -23,6 +24,7 @@ export class ObservationComponent implements OnInit {
     service.getPractitioner().then(practicien =>
       this.practicien = practicien);
     this.showPracticien = false;
+    this.envoie = false;
   }
 
   ngOnInit() {
@@ -35,6 +37,10 @@ export class ObservationComponent implements OnInit {
 
   onSend() {
     //let time = "2021-11-09 11:43:00";
+    this.envoie = true;
+    setTimeout(() => {
+      this.envoie = false;
+    }, 5000);
     var date = new Date();
     this.observation = {
       "resourceType": "Observation",

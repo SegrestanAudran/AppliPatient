@@ -30,6 +30,8 @@
                     <div *ngIf="p.id=='f333'">
                         <p>ID : {{p.id}}</p>
                         <p>Nom : {{p.name[0].family}}</p>
+                        <p *ngIf="p.active">Présent</p>
+                        <p *ngIf="!p.active">Absent</p>
                         <p>Prénom : {{p.name[0].text.substring(0,7)}}</p>
                         <p>Numéro CNS : {{p.identifier[0].value}}</p>
                         <p>Téléphone : {{p.telecom[0].value}}</p>
@@ -40,12 +42,14 @@
         </div>
     </div>
 </div>
-<button mat-button [matMenuTriggerFor]="menu">Menu</button>
+<button mat-button [matMenuTriggerFor]="menu">Autres médecins</button>
 <mat-menu #menu="matMenu">
     <div *ngFor="let p of practicien">
         <button *ngIf="p.active" mat-menu-item (click)="show(p)">{{p.name[0].text}} Actif</button>
+        <button *ngIf="!p.active" mat-menu-item (click)="show(p)">{{p.name[0].text}} Absent</button>
     </div>
 </mat-menu>
+
 <div *ngIf="showPracticien">
     <div class="row">
         <div class="col-md-12">
@@ -86,5 +90,6 @@
         <p>Adresse : {{practicienActif.address[0].line}}, {{practicienActif.address[0].city}}</p>
     </div>
 </div> -->
-
+<br><br>
 <button (click)="onSend()">Envoyer</button>
+<p *ngIf="envoie"> Votre observation a été envoyé</p>
